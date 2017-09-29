@@ -871,6 +871,24 @@ function getIncidentType()
     }
 }
 
+function getStreet()
+{
+    $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+    if (!$link) {
+        die('Could not connect: ' .mysql_error());
+    }
+
+    $query = "SELECT id, name, county FROM streets ORDER BY `id` ASC";
+
+    $result=mysqli_query($link, $query);
+
+    while($row = mysqli_fetch_array($result, MYSQLI_BOTH))
+    {
+        echo '<option value="'.$row[0].'">'.$row[1].'/'.$row[2].'</option>';
+    }
+}
+
 function getActiveUnits()
 {
     $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);

@@ -15,6 +15,7 @@ This program comes with ABSOLUTELY NO WARRANTY; Use at your own risk.
 
     require("./oc-functions.php");
     include("./actions/api.php");
+	include("./actions/dispatchActions.php")
     session_start();
 
     // TODO: Verify user has permission to be on this page
@@ -500,8 +501,14 @@ This program comes with ABSOLUTELY NO WARRANTY; Use at your own risk.
                      <div class="form-group row">
                         <label class="col-lg-2 control-label">Address</label>
                         <div class="col-lg-10">
-                           <input type="text" class="form-control txt-auto" id="street1" name="street1" placeholder="Street 1" required/>
-                           <input type="text" class="form-control txt-auto2" name="street2" id="street2" placeholder="Street 2/Cross/Postal" />
+                           <select class="form-control selectpicker" data-live-search="true" id="street1" name="street1" title="Street 1" required/>
+                              <option></option>
+							  <?php getStreet();?>
+                           </select>
+                           <select class="form-control selectpicker" data-live-search="true" id="street2" name="street2" title="Street 2/Cross/Postal" />
+                              <option></option>
+							  <?php getStreet();?>
+                           </select>
                            <input type="text" class="form-control" name="additionalLocation" placeholder="Any Additional Location Information" />
                         </div>
                         <!-- ./ col-sm-9 -->
